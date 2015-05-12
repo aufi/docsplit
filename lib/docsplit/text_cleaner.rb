@@ -18,17 +18,17 @@ module Docsplit
     WORD        = /\S+/
     SPACE       = /\s+/
     NEWLINE     = /[\r\n]/
-    ALNUM       = /[a-z0-9]/i
+    ALNUM       = /[a-zěščřžýáíéúů0-9]/i
     PUNCT       = /[[:punct:]]/i
     REPEAT      = /([^0-9])\1{2,}/
-    UPPER       = /[A-Z]/
-    LOWER       = /[a-z]/
-    ACRONYM     = /^\(?[A-Z0-9\.-]+('?s)?\)?[.,:]?$/
-    ALL_ALPHA   = /^[a-z]+$/i
-    CONSONANT   = /(^y|[bcdfghjklmnpqrstvwxz])/i
-    VOWEL       = /([aeiou]|y$)/i
-    CONSONANT_5 = /[bcdfghjklmnpqrstvwxyz]{5}/i
-    VOWEL_5     = /[aeiou]{5}/i
+    UPPER       = /[A-ZĚŠČŘŽÝÁÍÉÚŮ]/
+    LOWER       = /[a-zěščřžýáíéúů]/
+    ACRONYM     = /^\(?[A-ZĚŠČŘŽÝÁÍÉÚŮ0-9\.-]+('?s)?\)?[.,:]?$/
+    ALL_ALPHA   = /^[a-zěščřžýáíéúů]+$/i
+    CONSONANT   = /(^y|[bcdfghjklmnpqrstvwxzščřž])/i
+    VOWEL       = /([aeiouěýáíéúů]|y$)/i
+    CONSONANT_5 = /[bcdfghjklmnpqrstvwxzščřž]{5}/i
+    VOWEL_5     = /[aeiouěýáíéúů]{5}/i
     REPEATED    = /(\b\S{1,2}\s+)(\S{1,3}\s+){5,}(\S{1,2}\s+)/
     SINGLETONS  = /^[AaIi]$/
 
