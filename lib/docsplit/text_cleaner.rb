@@ -18,17 +18,17 @@ module Docsplit
     WORD        = /\S+/
     SPACE       = /\s+/
     NEWLINE     = /[\r\n]/
-    ALNUM       = /[a-zěščřžýáíéúů0-9]/i
+    ALNUM       = /[a-zěščřžýáíéúů0-9]/ui
     PUNCT       = /[[:punct:]]/i
     REPEAT      = /([^0-9])\1{2,}/
-    UPPER       = /[A-ZĚŠČŘŽÝÁÍÉÚŮ]/
-    LOWER       = /[a-zěščřžýáíéúů]/
-    ACRONYM     = /^\(?[A-ZĚŠČŘŽÝÁÍÉÚŮ0-9\.-]+('?s)?\)?[.,:]?$/
-    ALL_ALPHA   = /^[a-zěščřžýáíéúů]+$/i
-    CONSONANT   = /(^y|[bcdfghjklmnpqrstvwxzščřž])/i
-    VOWEL       = /([aeiouěýáíéúů]|y$)/i
-    CONSONANT_5 = /[bcdfghjklmnpqrstvwxzščřž]{5}/i
-    VOWEL_5     = /[aeiouěýáíéúů]{5}/i
+    UPPER       = /[A-ZĚŠČŘŽÝÁÍÉÚŮ]/u
+    LOWER       = /[a-zěščřžýáíéúů]/u
+    ACRONYM     = /^\(?[A-ZĚŠČŘŽÝÁÍÉÚŮ0-9\.-]+('?s)?\)?[.,:]?$/u
+    ALL_ALPHA   = /^[a-zěščřžýáíéúů]+$/ui
+    CONSONANT   = /(^y|[bcdfghjklmnpqrstvwxzščřž])/ui
+    VOWEL       = /([aeiouěýáíéúů]|y$)/ui
+    CONSONANT_5 = /[bcdfghjklmnpqrstvwxzščřž]{5}/ui
+    VOWEL_5     = /[aeiouěýáíéúů]{5}/ui
     REPEATED    = /(\b\S{1,2}\s+)(\S{1,3}\s+){5,}(\S{1,2}\s+)/
     SINGLETONS  = /^[AaIi]$/
 
@@ -36,7 +36,7 @@ module Docsplit
     # multibyte-aware version, coercing to ASCII first.
     def clean(text)
       if String.method_defined?(:encode)
-        text.encode!('ascii', :invalid => :replace, :undef => :replace, :replace => '?')
+        text.encode!('utf-8', :invalid => :replace, :undef => :replace, :replace => '?')
       else
         require 'iconv' unless defined?(Iconv)
         text = Iconv.iconv('ascii//translit//ignore', 'utf-8', text).first
